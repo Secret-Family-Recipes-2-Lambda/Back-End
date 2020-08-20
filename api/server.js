@@ -8,5 +8,8 @@ server.use(express.json());
 server.use('/api/auth', authRouter);
 server.use('/api/recipes', restricted, recipesRouter);
 
+server.get('/', (req, res) => {
+    res.status(200).json({message: 'Api is running'})
+});
 
 module.exports = server;
