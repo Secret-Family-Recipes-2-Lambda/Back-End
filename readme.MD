@@ -23,17 +23,27 @@ DELETE	    /api/recipes/:id	                  Delete a recipe
 ________________________________________________________________________
 
 Registration:
+
 POST to /api/auth/register
+
 {
+
   “username”: “string”, //required, unique
+  
   “password”: “string” //required
+  
 }
 
 Login:
+
 POST to /api/auth/login
+
 {
+
   “username”: “string”, //required
+  
   “password”: “string” //required
+  
 }
 ___________________________________________________________________________
 View All Recipes:
@@ -42,11 +52,15 @@ GET from /api/recipes/allRecipes
 
 Returns an array containing the details of each recipe
 
+
+
 View a Specific Recipe:
 
 GET from /api/recipes/:id
 
 Will return details of the specified recipe
+
+
 
 Adding a Recipe:
 
@@ -69,11 +83,13 @@ POST to /api/recipes
 
 Will return the details of new created recipe
 
+
 Editing a Recipe:
 
 PUT on /api/recipes/:id
 
 Will return message “Recipe Updated!” if successful
+
 
 Deleting a Recipe:
 
