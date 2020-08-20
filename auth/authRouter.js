@@ -15,7 +15,7 @@ router.post('/register', (req, res) => {
 
         User.addUser(credentials)
             .then(user => {
-                res.status(201).json(user)
+                res.status(201).json(credentials)
             })
             .catch(err => {
                 res.status(500).json({message: err.message})
@@ -26,7 +26,7 @@ router.post('/register', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-    const {username, password } = req.body;
+    const { username, password } = req.body;
     
     if(User.isValid(req.body)){
         User.findBy({username})
