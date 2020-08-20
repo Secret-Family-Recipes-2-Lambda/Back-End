@@ -54,6 +54,7 @@ Returns an array containing the details of each recipe
 
 
 
+
 View a Specific Recipe:
 
 GET from /api/recipes/:id
@@ -61,7 +62,7 @@ GET from /api/recipes/:id
 Will return details of the specified recipe
 
 
-
+______________________________________________________________________________
 Adding a Recipe:
 
 POST to /api/recipes
@@ -84,14 +85,14 @@ POST to /api/recipes
 
 Will return the details of new created recipe
 
-
+___________________________________________________________________________________
 Editing a Recipe:
 
 PUT on /api/recipes/:id
 
 Will return message “Recipe Updated!” if successful
 
-
+____________________________________________________________________________________
 Deleting a Recipe:
 
 DELETE from /api/recipes/:id
