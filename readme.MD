@@ -1,7 +1,7 @@
 Secret Family Recipes Cookbook API 
 
 API URL: https://familysecretrecipes.herokuapp.com/
-
+____________________________________________________________________
 Endpoints: 
 
 Method:	 Endpoint	:                         Purpose:
@@ -20,6 +20,8 @@ PUT	    /api/recipes/:id	                  Edit a recipe
 
 DELETE	    /api/recipes/:id	                  Delete a recipe
 
+________________________________________________________________________
+
 Registration:
 POST to /api/auth/register
 {
@@ -33,7 +35,7 @@ POST to /api/auth/login
   “username”: “string”, //required
   “password”: “string” //required
 }
-
+___________________________________________________________________________
 View All Recipes:
 GET from /api/recipes/allRecipes
 Returns an array containing the details of each recipe
