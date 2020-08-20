@@ -6,19 +6,19 @@ Endpoints:
 
 Method:	 Endpoint	:                         Purpose:
 
-POST	    /api/auth/register	          Register user
+POST	    /api/auth/register	      -    Register user
 
-POST	    /api/auth/login	                  Login
+POST	    /api/auth/login	          -        Login
 
-GET	            /api/recipes/allRecipes       Get all recipes
+GET	            /api/recipes/allRecipes    -   Get all recipes
 
-GET 	    /api/recipes/:id	                  Gets a specific recipe
+GET 	    /api/recipes/:id	         -         Gets a specific recipe
 
-POST	    /api/recipes	                  Add a new recipe
+POST	    /api/recipes	             -     Add a new recipe
 
-PUT	    /api/recipes/:id	                  Edit a recipe
+PUT	    /api/recipes/:id	           -       Edit a recipe
 
-DELETE	    /api/recipes/:id	                  Delete a recipe
+DELETE	    /api/recipes/:id	         -         Delete a recipe
 
 ________________________________________________________________________
 
