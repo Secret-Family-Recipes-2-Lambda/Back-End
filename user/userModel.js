@@ -19,6 +19,8 @@ function getUserById(id) {
     return db('user').where({id}).first();
 };
 
+// remove .returning('*') and uncomment .then() statement when using sqlite3
+
 function addUser(user) {
     return db('user').insert(user).returning('*');
         // .then(id => {
@@ -28,10 +30,10 @@ function addUser(user) {
 };
 
 function updateUser(id, body) {
-    return db('user').where({id}).update(body)
-        .then(id => {
-            return getUserById(id)
-        });
+    return db('user').where({id}).update(body).returning('*');
+        // .then(id => {
+        //     return getUserById(id)
+        // });
 };
 
 function deleteUser(id) {

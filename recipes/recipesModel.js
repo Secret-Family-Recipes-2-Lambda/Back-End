@@ -18,24 +18,24 @@ function getRecipeById(id) {
 }
 
 function addRecipe(recipe) {
-    return db('recipes').insert(recipe)
-        .then(id => {
-            return getRecipeById(id)
-        })
+    return db('recipes').insert(recipe).returning('*');
+        // .then(id => {
+        //     return getRecipeById(id)
+        // })
 }
 
 function editRecipe(id, body) {
-    return db('recipes').where({id}).update(body)
-        .then(id => {
-            return  getRecipeById(id)
-        })
+    return db('recipes').where({id}).update(body).returning('*');
+        // .then(id => {
+        //     return  getRecipeById(id)
+        // })
 }
 
 function deleteRecipe(id) {
-    return db('recipes').where({id}).del()
-        .then(id => {
-            return getRecipeById(id)
-        })
+    return db('recipes').where({id}).del().returning('*');
+        // .then(id => {
+        //     return getRecipeById(id)
+        // })
 }
 
 function isValid(recipe) {
