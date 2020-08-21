@@ -20,11 +20,11 @@ function getUserById(id) {
 };
 
 function addUser(user) {
-    return db('user').insert(user)
-        .then(id => {
-            console.log(id)
-            return getUserById(id[0])
-        });
+    return db('user').insert(user).returning('*');
+        // .then(id => {
+        //     console.log(id)
+        //     return getUserById(id[0])
+        // });
 };
 
 function updateUser(id, body) {
