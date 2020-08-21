@@ -22,7 +22,8 @@ function getUserById(id) {
 function addUser(user) {
     return db('user').insert(user)
         .then(id => {
-            return getUserById(id)
+            console.log(id)
+            return getUserById(id[0])
         });
 };
 
