@@ -16,7 +16,13 @@ router.post('/register', (req, res) => {
         User.addUser(credentials)
             .then(newUser => {
                 const token = generateToken(newUser)
-                res.status(201).json({data: newUser, token})
+                res.status(201).json({
+                    id: newUser.id,
+                    username: newUser.username,
+                    password: newUser.password,
+                    token: token,
+                    message: 'You have registered successfully'
+                })
             })
             .catch(err => {
                 res.status(500).json({message: err.message})
@@ -26,6 +32,50 @@ router.post('/register', (req, res) => {
     }
 });
 
+
+// router.post('/register', (req, res) => {
+//     let user = res.body;
+//     const hash = bcrypt.hashSync(user.password, hashRounds);
+//     user.password = hash;
+
+//     User.addUser(user)
+//         .then(newUser => {
+//             const token = genToken(newUser);
+//             res.status(201).json({
+//                 id: newUser.id,
+//                 username: newUser.username,
+//                 password: newUser.password,
+//                 token: token,
+//                 message: 'You have successfully registered!'
+//             })
+//         })
+//         .catch(err => res.status(500).json(err.message))
+// });
+
+
+// router.post('login', (req, res) => {
+//     let { username, password } = req.body;
+
+//     User.findBy({username})
+//         .first()
+//         .then(user => {
+//             if (user && bcrypt.compareSync(password, user.password)) {
+//                 const token = genToken(user);
+//                 res.status(200).json({
+//                     id: user.id,
+//                     username: user.username,
+//                     token: token,
+//                     message: 'You are now logged in'
+//                 })
+//             } else {
+//                 res.status(401).json({message: 'Please enter a valid username and password'})
+//             }
+//         })
+//         .catch(err => res.status(500).json(err.message))
+// });
+
+
+
 router.post('/login', (req, res) => {
     const { username, password } = req.body;
     
@@ -34,7 +84,9 @@ router.post('/login', (req, res) => {
             .then(([user]) => {
                 if(user && bcrypt.compareSync(password, user.password)){
                     const token = generateToken(user)
-                    res.status(200).json({data: {message: 'You are now logged in'}, token })
+                    res.status(200).json({
+                        message: 'You are now logged in',
+                        token: token})
                 } else {
                     res.status(401).json({message: 'Username or password not valid'})
                 }
@@ -57,7 +109,9 @@ function generateToken(user) {
         expiresIn: '1h'
     };
 
-    return jwt.sign(payload, jwtSecret, options)
+    const token = jwt.sign(payload, jwtSecret, options);
+
+    return token;
 }
 
 module.exports = router;

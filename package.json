@@ -1,10 +1,27 @@
 {
-  "name": "Back-End",
+  "name": "back-end",
   "version": "1.0.0",
-  "description": "",
+  "description": "Secret Family Recipes Cookbook API",
   "main": "index.js",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.2",
+    "crypto-random-string": "^3.2.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.1.0",
+    "jest": "^26.4.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.5",
+    "nodemon": "^2.0.4",
+    "pg": "^8.3.2",
+    "sqlite3": "^5.0.0",
+    "supertest": "^4.0.2"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cross-env DB_ENV=testing jest --watch",
     "server": "nodemon index.js",
     "start": "node index.js"
   },
@@ -18,20 +35,5 @@
   "bugs": {
     "url": "https://github.com/Secret-Family-Recipes-2-Lambda/Back-End/issues"
   },
-  "homepage": "https://github.com/Secret-Family-Recipes-2-Lambda/Back-End#readme",
-  "dependencies": {
-    "bcrypt": "^5.0.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "knex": "^0.21.5",
-    "pg": "^8.3.2",
-    "sqlite3": "^5.0.0"
-  },
-  "devDependencies": {
-    "jest": "^26.4.1",
-    "nodemon": "^2.0.4",
-    "supertest": "^4.0.2"
-  }
+  "homepage": "https://github.com/Secret-Family-Recipes-2-Lambda/Back-End#readme"
 }

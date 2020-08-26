@@ -5,7 +5,7 @@ const Recipes = require('./recipesModel');
 router.get('/allRecipes', (req, res) => {
     Recipes.getRecipes()
         .then(recipes => {
-            res.status(200).json({data: recipes})
+            res.status(200).json(recipes)
         })
         .catch(err => res.status(500).json({message: err.message}))
 });
@@ -15,7 +15,7 @@ router.get('/:id', (req, res) => {
 
     Recipes.getRecipeById(id)
         .then(recipe => {
-            res.status(200).json({data: recipe})
+            res.status(200).json(recipe)
         })
         .catch(err => res.status(500).json({message: err.message}))
 });
@@ -26,7 +26,16 @@ router.post('/', (req, res) => {
     if(recipeInfo){
          Recipes.addRecipe(recipeInfo)
         .then(newRecipe => {
-            res.status(200).json({data: newRecipe})
+            res.status(200).json({
+                id: newRecipe.id,
+                title: newRecipe.title,
+                source: newRecipe.source,
+                ingredients: newRecipe.ingredients,
+                instructions: newRecipe.instructions,
+                private: newRecipe.private,
+                user_id: newRecipe.user_id,
+                message: 'Your recipe has been added!'
+            })
         })
         .catch(err => res.status(500).json({message: err.message}))
     } else {
@@ -46,7 +55,9 @@ router.put('/:id', (req, res) => {
         if(recipeInfo) {
             Recipes.editRecipe(id, recipeInfo)
                 .then(editedRecipe => {
-                    res.status(200).json({data: {message: 'Recipe Updated!'}, editedRecipe})
+                    res.status(200).json({
+                        message: 'The recipe has been edited'
+                    })
                 })
                 .catch(err => res.status(500).json({message: err.message}))
         } else {
@@ -65,7 +76,9 @@ router.delete('/:id', (req, res) => {
     if(recipe){
         Recipes.deleteRecipe(id)
             .then(deletedRecipe => {
-                res.status(200).json({data: {message: 'Recipe Deleted!'}, deletedRecipe })
+                res.status(200).json({
+                    message: 'The recipe has been deleted'
+                })
             })
             .catch(err => res.status(500).json({message: err.message}))
     } else {

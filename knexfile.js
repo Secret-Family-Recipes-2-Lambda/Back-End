@@ -28,6 +28,7 @@ module.exports = {
     connection: {
       database: './data/family_recipes.sqlite3',
     },
+    useNullAsDefault: true,
     migrations: {
       directory: './data/migrations'
     },

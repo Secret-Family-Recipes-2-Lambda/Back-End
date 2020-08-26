@@ -17,24 +17,34 @@ function getRecipeById(id) {
     return db('recipes').where({id}).first();
 }
 
+// remove .returning('*') and uncomment .then() statement when using sqlite3
+
+// function addRecipe(recipe) {
+//     return db('recipes').insert(recipe).returning('*');
+//         // .then(id => {
+//         //     return getRecipeById(id[0])
+//         // })
+// }
+
 function addRecipe(recipe) {
-    return db('recipes').insert(recipe).returning('*');
-        // .then(id => {
-        //     return getRecipeById(id)
-        // })
+    return db('recipes').insert(recipe)
+        .then(id => {
+            return getRecipeById(id[0])
+        })
 }
+
 
 function editRecipe(id, body) {
     return db('recipes').where({id}).update(body).returning('*');
         // .then(id => {
-        //     return  getRecipeById(id)
+        //     return  getRecipeById(id[0])
         // })
 }
 
 function deleteRecipe(id) {
     return db('recipes').where({id}).del().returning('*');
         // .then(id => {
-        //     return getRecipeById(id)
+        //     return getRecipeById(id[0])
         // })
 }
 

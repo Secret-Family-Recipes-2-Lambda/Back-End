@@ -4,7 +4,9 @@ const restricted = require('../auth/auth-restriced-middleware');
 const authRouter = require('../auth/authRouter');
 const recipesRouter = require('../recipes/recipesRouter');
 const cors = require('cors');
+const helmet = require('helmet')
 
+server.use(helmet());
 server.use(cors());
 server.use(express.json());
 server.use('/api/auth', authRouter);
