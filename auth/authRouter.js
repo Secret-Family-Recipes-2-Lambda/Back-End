@@ -17,9 +17,7 @@ router.post('/register', (req, res) => {
             .then(newUser => {
                 const token = generateToken(newUser)
                 res.status(201).json({
-                    id: newUser.id,
-                    username: newUser.username,
-                    password: newUser.password,
+                    newUser: newUser,
                     token: token,
                     message: 'You have registered successfully'
                 })
@@ -85,6 +83,7 @@ router.post('/login', (req, res) => {
                 if(user && bcrypt.compareSync(password, user.password)){
                     const token = generateToken(user)
                     res.status(200).json({
+                        user: user,
                         message: 'You are now logged in',
                         token: token})
                 } else {

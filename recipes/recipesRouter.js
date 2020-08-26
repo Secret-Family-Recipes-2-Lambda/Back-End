@@ -27,13 +27,7 @@ router.post('/', (req, res) => {
          Recipes.addRecipe(recipeInfo)
         .then(newRecipe => {
             res.status(200).json({
-                id: newRecipe.id,
-                title: newRecipe.title,
-                source: newRecipe.source,
-                ingredients: newRecipe.ingredients,
-                instructions: newRecipe.instructions,
-                private: newRecipe.private,
-                user_id: newRecipe.user_id,
+                newRecipe: newRecipe,
                 message: 'Your recipe has been added!'
             })
         })
