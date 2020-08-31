@@ -19,16 +19,16 @@ function getRecipeById(id) {
 
 // remove .returning('*') and uncomment .then() statement when using sqlite3
 
-function addRecipe(recipe) {
-    return db('recipes').insert(recipe).returning('*');
-}
-
 // function addRecipe(recipe) {
-//     return db('recipes').insert(recipe)
-//         .then(id => {
-//             return getRecipeById(id[0])
-//         })
+//     return db('recipes').insert(recipe).returning('*');
 // }
+
+function addRecipe(recipe) {
+    return db('recipes').insert(recipe)
+        .then(id => {
+            return getRecipeById(id)
+        })
+}
 
 
 function editRecipe(id, body) {

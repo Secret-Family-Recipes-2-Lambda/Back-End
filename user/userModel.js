@@ -21,19 +21,29 @@ function getUserById(id) {
 
 // remove .returning('*') and uncomment .then() statement when using sqlite3
 
-function addUser(user) {
-    return db('user').insert(user).returning('*');
-};
+// function addUser(user) {
+//     return db('user').insert(user).returning('*');
+// };
 
 
 // function addUser(user) {
 //     return db('user').insert(user)
 //         .then(id => {
 //             console.log(id)
-//             return getUserById(id[0])
+//             return getUserById(id)
 //         });
 // };
 
+
+async function addUser(user) {
+    try {
+        const [id] = await db('user').insert(user, 'id');
+
+        return getUserById(id);
+    } catch (err) {
+        throw err
+    }
+};
 
 
 

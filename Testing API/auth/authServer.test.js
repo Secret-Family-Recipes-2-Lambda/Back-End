@@ -1,11 +1,8 @@
-const server = require('../api/server');
 const request = require('supertest');
-const db = require('../data/db-config');
-const cryptoRandomString = require('crypto-random-string');
+const server = require('../api/server');
+const Users = require('../database/db-model');
+const db = require('../database/dbConfig');
 
-const randomString = cryptoRandomString({length: 10});
-
-console.log('randomString' , randomString)
 
 
 describe('server.js', () => {
@@ -20,14 +17,17 @@ describe('post /auth/register', () => {
 
     beforeAll(async () => {
         await db('user').truncate();
-        res = await request(server).post('/api/auth/register').send({username: randomString, password: randomString})
-        console.log(res)
+        res = await request(server).post('/api/auth/register').send(
+            {username: 'Lebron James', password: 'TheKing23'})
+    });
+
+    it('checks that the status is 201', () => {
+        expect(res.status).toBe(201)
     });
 
     it('uses a type of json', () => {
         expect(res.type).toBe('application/json')
     })
-
 });
 
 
@@ -35,15 +35,14 @@ describe('post /auth/register', () => {
 describe('post /api/auth/login', () => {
     beforeAll(async () => {
       res = await request(server).post('/api/auth/login').send(
-          {username: randomString.toString(), password: randomString});
-          console.log('login', res.body)
+          {username: 'Lebron James', password: 'TheKing23'});
     });
 
+    it('should return 200', () => {
+      expect(res.status).toBe(200);
+    });
 
     it('should return a JSON object', () => {
       expect(res.type).toBe('application/json');
     });
   });
-
-
- 
