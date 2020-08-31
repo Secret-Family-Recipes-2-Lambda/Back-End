@@ -16,14 +16,18 @@
     "knex": "^0.21.5",
     "nodemon": "^2.0.4",
     "pg": "^8.3.2",
-    "sqlite3": "^5.0.0",
+    "sqlite3": "^5.0.0"
+  },
+  "devDependencies": {
     "supertest": "^4.0.2"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "cross-env DB_ENV=testing jest --watch",
     "server": "nodemon index.js",
     "start": "node index.js"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "repository": {
     "type": "git",
